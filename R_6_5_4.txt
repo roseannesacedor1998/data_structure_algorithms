@@ -1,0 +1,66 @@
+// abrigo; 
+// BSCS 2-A
+// R-6.4
+// Stack transfer to other Stack
+
+package stack;
+
+import java.util.Stack;
+
+public class R_6_4 {
+	
+	static Stack<Character> st = new Stack<>();
+	
+	public static void insert_at_bottom(char x)
+	{
+		
+		if(st.isEmpty())
+			st.push(x);
+			
+			else
+			{
+				char a = st.peek();
+				st.pop();
+				insert_at_bottom(x);
+				
+				st.push(a);
+				
+			}
+		
+	}
+	
+	public static void transfer()
+	{
+		
+		if(st.size() > 0 )
+		{
+			char x = st.peek();
+			st.pop();
+			transfer();
+			
+			insert_at_bottom(x);
+		}
+		
+	}
+
+	public static void main(String[] args) 
+	{
+
+		st.push('4');
+		st.push('3');
+		st.push('2');
+		st.push('1');
+		
+		System.out.println("Original Stack");
+		
+		System.out.println(st);
+		
+		transfer();
+		
+		System.out.println("Transfer Stack");
+		
+		System.out.println(st);
+		
+	}
+
+}
